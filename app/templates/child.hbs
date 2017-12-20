@@ -1,0 +1,9 @@
+<h2>child route</h2>
+
+<ul>
+  {{#each model as |item|}}
+    <li>{{item}}</li>
+  {{/each}}
+</ul>
+
+<button class="refresh" onclick={{action (route-action 'refresh')}}>Refresh model</button>

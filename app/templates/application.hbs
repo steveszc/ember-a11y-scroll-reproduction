@@ -1,5 +1,18 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+<div class="status">
+  Currently using
+  <strong>{{if useFocusingOutlet 'a focusing-outlet' 'an outlet'}}</strong>.
+  <button onclick={{action (route-action 'toggleFocusingOutlet')}}>
+    Switch to a {{if useFocusingOutlet 'outlet' 'focusing-outlet'}}
+  </button>
+</div>
 
-{{outlet}}
+<h1>focusing-outlet behavior demo</h1>
+<p>This demo illustrates undesireable behavior of the focusing-outlet provided by ember-a11y. When a child route contained by a focusing-outlet has it's model refreshed, the browser scroll position jumps to the top of the screen. When a normal outlet is used instead, browser scroll position is maintained.</p>
+
+<p>Please scroll down to the bottom of the list and click the "refresh model" button. You'll find that you scroll position stays at the bottom of the screen. Then switch to a focusing outlet using the provided button and do the same. You'll find that the browser jumps back to the top of the page.</p>
+
+{{#if useFocusingOutlet}}
+  {{focusing-outlet}}
+{{else}}
+  {{outlet}}
+{{/if}}
